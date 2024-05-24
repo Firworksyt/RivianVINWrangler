@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rivian VIN Decoder</title>
+    <title>Rivian VIN Wrangler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background-color: #016388; /* Custom Rivian blue */
+        }
         #result {
             max-height: 300px; /* Limit height of result display */
             overflow-y: auto; /* Enable scrolling if content is too long */
         }
+        .rivian-yellow {
+            background-color: #f8af2e; /* Rivian Yellow */
+        }
+        .rivian-yellow:hover {
+            background-color: #d7901e; /* Darker Rivian Yellow for hover effect */
+        }
     </style>
 </head>
-<body class="bg-blue-100 flex justify-center items-center h-screen">
+<body class="flex justify-center items-center h-screen">
     <div class="w-full max-w-xl p-5 bg-white rounded-lg shadow-lg">
         <header class="text-center mb-4">
             <h1 class="font-bold text-xl mb-2">Rivian VIN Wrangler</h1>
@@ -25,7 +34,7 @@
             </div>
             <div class="mb-4">
                 <button onclick="decodeVin()" 
-                class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">
+                class="w-full p-2 rivian-yellow text-white rounded hover:bg-d7901e transition-colors">
                 Decode</button>
             </div>
             <div id="result" class="p-2 bg-gray-100 rounded text-gray-700"></div>
