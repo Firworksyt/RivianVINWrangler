@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rivian VIN Decoder</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <h1>Rivian VIN Decoder</h1>
-        <p>Enter a Rivian VIN below to decode its specifications.</p>
-    </header>
-    <main>
-        <input type="text" id="vinInput" placeholder="Enter VIN here">
-        <button onclick="decodeVin()">Decode</button>
-        <div id="result"></div>
-    </main>
-    <footer>
-        <p>Is it broken or screwed up somehow? Hit up <a href="https://x.com/firworksyt" target="_blank" rel="noopener noreferrer">Firworks</a></p>
-        <p>Or submit an issue or something? <a href="https://github.com/Firworksyt/RivianVINWrangler" target="_blank" rel="noopener noreferrer">Github</a></p>
-    </footer>
+<body class="bg-blue-100 flex justify-center items-center h-screen">
+    <div class="w-full max-w-xl p-5 bg-white rounded-lg shadow-lg">
+        <header class="text-center mb-4">
+            <h1 class="font-bold text-xl mb-2">Rivian VIN Wrangler</h1>
+            <p class="text-gray-600">Enter a Rivian VIN below to decode its specifications.</p>
+        </header>
+        <main>
+            <div class="mb-4">
+                <input type="text" id="vinInput" placeholder="Enter VIN here" 
+                class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div class="mb-4">
+                <button onclick="decodeVin()" 
+                class="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition-colors">
+                Decode</button>
+            </div>
+            <div id="result" class="p-2 bg-gray-100 rounded text-gray-700"></div>
+        </main>
+        <footer class="mt-4 text-sm text-gray-600">
+            <p>Is it broken or screwed up somehow? Hit up <a href="https://x.com/username" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">Firworks</a></p>
+            <p>Or submit an issue or something? <a href="https://github.com/reponame" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">Github</a></p>
+        </footer>
+    </div>
     <script src="decoder.js"></script>
 </body>
 </html>
