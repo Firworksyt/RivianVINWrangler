@@ -5,18 +5,11 @@ function decodeVin() {
     const vinRegex = /^(7FC|7PD|7FE)[A-Z0-9]{14}$/;
 
     if (!vinRegex.test(vin)) {
-        resultDiv.innerHTML = "<p>Please enter a valid Rivian VIN (must start with '7FC', '7PD', or '7FE' and be 17 characters long).</p>";
+        resultDiv.innerHTML = "<p class='text-red-500'>Please enter a valid Rivian VIN (must start with '7FC', '7PD', or '7FE' and be 17 characters long).</p>";
         return;
     }
 
-    let decodeEngine;
-    if (['M', 'N', 'P', 'R'].includes(vin.charAt(9))) {
-        decodeEngine = decodeEnginePre2025;
-    } else if (vin.charAt(9) === 'S') {
-        decodeEngine = decodeEnginePost2025;
-    } else {
-        decodeEngine = decodeEnginePre2025; // Default to pre-2025 if uncertain
-    }
+    let decodeEngine = ['M', 'N', 'P', 'R'].includes(vin.charAt(9)) ? decodeEnginePre2025 : decodeEnginePost2025;
 
     const decoded = {
         "WMI": decodeWMI(vin.substring(0, 3)),
@@ -31,6 +24,7 @@ function decodeVin() {
         "Serial Number": vin.substring(11)
     };
 
+    // Use JSON.stringify to format the JSON output neatly
     resultDiv.innerHTML = `<pre>${JSON.stringify(decoded, null, 2)}</pre>`;
 }
 
@@ -90,7 +84,7 @@ function decodeRestraints(restraints) {
     return map[restraints] || 'Unknown Restraints';
 }
 
-function decodeTrim(trim) { //Changes for 2025 still need to be considered
+function decodeTrim(trim) {
     const map = {
         'A': 'Adventure',
         'L': 'Launch Edition',
@@ -130,7 +124,6 @@ function calculateCheckDigit(vin) {
         'V': 5, 'W': 6, 'X': 7, 'Y': 8, 'Z': 9,
         '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '0': 0
     };
-
     const weights = [8, 7, 6, 5, 4, 3, 2, 10, 0, 9, 8, 7, 6, 5, 4, 3, 2];
 
     let sum = 0;
